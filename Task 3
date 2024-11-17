@@ -1,0 +1,75 @@
+1. Distribute Leads Evenly Among Sales Reps
+Objective: Assign leads automatically to sales reps in a round-robin manner using Google Sheets.
+
+Implementation Steps:
+
+Set Up Sales Rep Rotation in Google Sheets:
+
+Add a column named "Assigned Sales Rep".
+Create a list of sales reps (e.g., John, Sarah, and Alex).
+Use Zapier to track assignments and rotate through the list.
+Zapier Workflow:
+
+Step 1: Trigger: Google Forms → New Response in Spreadsheet.
+Step 2: Action: Use Formatter by Zapier → Numbers → Increment a counter.
+Store this counter in a separate Google Sheets file or a Zapier storage key.
+Step 3: Assign Rep:
+Use a “Lookup Table” in Zapier Formatter to rotate reps based on the counter value:
+1 → John, 2 → Sarah, 3 → Alex, then loop back to 1.
+Update the "Assigned Sales Rep" column in the lead's row.
+Limitations:
+
+Zapier’s free plan allows a limited number of storage keys, so using Google Sheets for tracking might be better for scalability.
+Manual updates to the sales rep list are needed if the team changes.
+2. Extract Keywords from the "Comments" Field
+Objective: Perform basic text analysis on the "Comments" field to categorize leads.
+
+Implementation Steps:
+
+Zapier Workflow:
+Step 1: Trigger: Google Forms → New Response in Spreadsheet.
+Step 2: Action: Use Formatter by Zapier → Text → Extract Keywords.
+Example: Extract keywords like “demo,” “pricing,” “support,” or “urgent” from the "Comments" field.
+Step 3: Categorize Lead:
+Use a Zapier Filter to tag leads based on keywords:
+“Demo” → Tag as “Interested in Product Demo.”
+“Urgent” → Tag as “High Priority.”
+Update the "Category" column in Google Sheets with these tags.
+Limitations:
+
+Zapier’s text extraction is basic and might not handle complex or ambiguous comments well. For more advanced analysis, tools like OpenAI’s API (paid) could be integrated.
+3. Schedule Follow-Up Reminders for Sales Team
+Objective: Automatically schedule a Google Calendar event for the assigned sales rep.
+
+Implementation Steps:
+
+Zapier Workflow:
+
+Step 1: Trigger: Google Forms → New Response in Spreadsheet.
+Step 2: Action: Use Google Calendar → Create Event.
+Event Title: “Follow-Up with [Lead Name]”
+Date: 1-2 days after form submission.
+Description: Include lead details (e.g., email, company size, comments).
+Assign the event to the sales rep’s calendar.
+Enhancements:
+
+Include time zones from the lead’s data to schedule reminders at optimal times for both parties.
+Add a buffer period (e.g., delay reminders for leads in nurturing campaigns).
+Limitations:
+
+Sales reps need to grant access to their Google Calendars.
+Overlapping reminders could become an issue as the team scales.
+Final Workflow in Zapier
+Trigger: Google Forms → New Response in Spreadsheet.
+Assign Sales Rep: Use Zapier Formatter with a Lookup Table to rotate sales reps.
+Extract Keywords: Analyze the "Comments" field for lead categorization.
+Schedule Follow-Up: Create a Google Calendar event for the assigned rep.
+Update Sheets: Add all processed data to a Google Sheets file for tracking.
+Deliverables
+Explanations
+Lead Distribution: Sales reps are assigned evenly through a round-robin system. This ensures no rep is overloaded and all leads are promptly attended.
+Keyword Extraction: Automates lead categorization, helping the sales team prioritize leads based on their expressed needs.
+Follow-Up System: Guarantees timely follow-ups, improving response rates and lead engagement.
+Limitations
+Free Zapier plans are limited to a certain number of Zaps and actions per month.
+The basic keyword extraction might miss nuanced lead requirements.
