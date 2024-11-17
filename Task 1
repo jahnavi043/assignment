@@ -1,0 +1,70 @@
+  1. Lead Scoring System
+Assign scores based on the company’s priorities. The higher the score, the more promising the lead.
+
+Criteria	Options	Score
+Company Size	1-50 employees	10
+51-200 employees	20
+201-1000 employees	30
+1000+ employees	40
+Annual Budget	Less than $10,000	5
+$10,000 - $50,000	15
+$50,001 - $100,000	25
+More than $100,000	40
+Industry	Technology	30
+Finance	25
+Healthcare	25
+Retail	15
+Other	10
+Urgency of Need	Immediate (1 month)	40
+Short-term (1-3 months)	30
+Medium-term (3-6 months)	20
+Long-term (6+ months)	10
+Maximum Score: 160
+Threshold for High-Priority Leads: 70 points
+2. Workflow Implementation
+Step 1: Trigger - Form Submission
+Use Google Forms to capture lead details.
+Configure Zapier to trigger whenever a new response is submitted to the linked Google Sheets.
+Step 2: Calculate Lead Score
+Use Zapier’s Formatter:
+Add a “Numbers” step to calculate the score based on the form responses.
+Example:
+If "Company Size" is 51-200 employees → Add 20 points.
+If "Annual Budget" is $50,001-$100,000 → Add 25 points.
+The score is dynamically calculated.
+Step 3: Add Data to Google Sheets
+Create a Google Sheets file with the following columns:
+Lead Name, Email, Company Size, Budget, Industry, Urgency, and Lead Score.
+Zapier adds a new row with the form data and calculated score.
+Step 4: Filter and Take Action
+Filter for High-Priority Leads (Score ≥ 70):
+
+Send a welcome email using Gmail.
+Use a standard template like:
+Hi [Name],
+Thank you for your interest in TechNova! Our team is excited to discuss how we can help. Let us know if you'd like to set up a meeting.
+
+Add these leads to the "High-Priority Leads" spreadsheet for immediate follow-up by the sales team.
+For Low-Priority Leads (Score < 70):
+
+Add their information to a separate “Nurturing” spreadsheet.
+Plan follow-up email campaigns using tools like Mailchimp or manual outreach later.
+3. How to Build This in Zapier
+Zap Setup:
+
+Trigger: Google Forms → New Response in Spreadsheet.
+Action 1: Formatter by Zapier → Numbers → Calculate Score.
+Action 2: Google Sheets → Add Row.
+Filters:
+
+Condition 1: If Lead Score >= 70, send an email and add to “High-Priority Leads”.
+Condition 2: If Lead Score < 70, add to “Nurturing” spreadsheet.
+Email Setup:
+
+Use Gmail in Zapier for automatic email delivery. Customize the email with the lead's name or company.
+4. Tools Used
+Google Forms: For lead data collection.
+Zapier: For automation and lead scoring.
+Google Sheets: To store lead data.
+Gmail: For email communication.
+Optional: Mailchimp for nurturing campaigns.
